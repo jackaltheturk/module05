@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:35 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/21 22:00:19 by etorun           ###   ########.fr       */
+/*   Updated: 2025/11/21 22:56:27 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,21 @@ int Bureaucrat::getGrade() const
 {
 	return grade;
 }
+void Bureaucrat::increment()
+{
+	if(grade - 1 > 0)
+		grade = grade - 1;
+	else	
+		throw GradeTooHighException();
+}
+
+void Bureaucrat::decrement()
+{
+	if (grade + 1 < 151)
+		grade = grade + 1;
+	else
+		throw GradeTooLowException();
+}
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -53,4 +68,10 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return "Grade too low!";
+}
+
+std::ostream& operator<<(std::ostream& outstream, const Bureaucrat& bureaucrat)
+{
+	outstream << bureaucrat.getName() <<", bureaucrat grade "<< bureaucrat.getGrade()<<".";
+	return outstream;
 }

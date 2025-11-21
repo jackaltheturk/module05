@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:11:30 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/21 21:57:48 by etorun           ###   ########.fr       */
+/*   Updated: 2025/11/21 22:51:49 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 int main()
 {
+	Bureaucrat ali("Ali", 150);        
 	try 
 	{
-		Bureaucrat ali("Ali", 200);        
-	    Bureaucrat erman("Erman", -10); 
+	   ali.decrement();
 	} 
 	catch (const Bureaucrat::GradeTooLowException& error) 
 	{
 	    std::cout << error.what() << std::endl;
-	} catch (const Bureaucrat::GradeTooHighException& error) 
+	} 
+	catch (const Bureaucrat::GradeTooHighException& error) 
 	{
 	    std::cout << error.what() << std::endl;
 	}
-		return 0;
+	std::cout << ali;	
+	return 0;
 }
