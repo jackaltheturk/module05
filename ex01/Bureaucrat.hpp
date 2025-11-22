@@ -6,13 +6,15 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/22 21:49:06 by etorun           ###   ########.fr       */
+/*   Updated: 2025/11/22 22:17:29 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
+
+class Form;
 
 class Bureaucrat
 {
@@ -32,6 +34,7 @@ class Bureaucrat
 	int getGrade() const;
 	void increment();
 	void decrement();
+	void signForm(Form& form);
 
 	class GradeTooHighException : public std::exception
 	{
