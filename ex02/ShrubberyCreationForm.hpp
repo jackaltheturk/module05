@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 21:14:58 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 21:15:03 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 21:41:50 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 
 class ShrubberyCreationForm : public AForm
 {
-	private:
-	
-	const std::string name;
-	bool isSigned;
-	const int signRequired;
-	const int execRequired;
-	
 	public:
 	
 	ShrubberyCreationForm();
@@ -30,11 +23,7 @@ class ShrubberyCreationForm : public AForm
 	ShrubberyCreationForm(const ShrubberyCreationForm &sample);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm &copy);
 	~ShrubberyCreationForm();
-	std::string getName() const;
-	bool getIsSigned() const;
-	int getSignRequired() const;
-	int getExecRequired() const;
-	void beSigned(const Bureaucrat& bureaucrat);
+	
 	void execute(Bureaucrat const & executor) const;
 	
 	class NotSigned : public std::exception

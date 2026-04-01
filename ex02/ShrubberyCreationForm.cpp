@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 21:13:04 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 21:49:05 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,20 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): name("Default"), isSigned(false), signRequired(150), execRequired(150){}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm(){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string Name, int SignRequired, int ExecRequired): name(Name), signRequired(SignRequired), execRequired(ExecRequired)
-{
-	isSigned = false;
-	if (SignRequired < 1)
-    	throw GradeTooHighException();
-	else if (SignRequired > 150)
-    	throw GradeTooLowException();
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string Name, int SignRequired, int ExecRequired): AForm(Name,SignRequired , ExecRequired) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &sample) : name(sample.name), isSigned(sample.isSigned), signRequired(sample.signRequired), execRequired(sample.execRequired){};
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &sample) : AForm(sample){};
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
 {
 	if (this != &copy)
-		isSigned = copy.getIsSigned();
+		AForm::operator=(copy);
 	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){};
-
-std::string ShrubberyCreationForm::getName() const { return name;}
-
-bool ShrubberyCreationForm::getIsSigned() const { return isSigned;}
-
-int ShrubberyCreationForm::getSignRequired() const {return signRequired;}
-
-int ShrubberyCreationForm::getExecRequired() const {return execRequired;}
-
-void ShrubberyCreationForm::beSigned(const Bureaucrat& bureaucrat)
-{
-	if(bureaucrat.getGrade() <= getSignRequired())
-		isSigned = true;
-	else 
-		throw GradeTooLowException();
-};
-
-void Bureaucrat::executeForm(AForm const & form) const
-{
-	if (form.getIsSigned())
-	{
-		form.execute(*this);
-	}
-}
 
 const char* ShrubberyCreationForm::NotSigned::what() const throw()
 {
