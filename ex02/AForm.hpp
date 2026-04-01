@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/22 22:20:54 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:20:21 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ class AForm
 	AForm();
 	AForm(std::string Name, int SignRequired, int ExecRequired);
 	AForm(const AForm &sample);
-	AForm& operator=(const AForm &copy);
+	AForm& operator=(const AForm& copy);
 	virtual ~AForm();
 	std::string getName() const;
 	bool getIsSigned() const;
 	int getSignRequired() const;
 	int getExecRequired() const;
 	void beSigned(const Bureaucrat& bureaucrat);
-	virtual void execute(Bureaucrat const & executor) const = 0;
+	virtual void execute(Bureaucrat const& executor) const = 0;
 	class GradeTooHighException : public std::exception
 	{
 		public:

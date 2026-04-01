@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:11:30 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 19:56:46 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:22:37 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "Form creation has been failed!!" << std::endl;
+		std::cerr << "Form creation has been failed!!" << std::endl;
 		std::cerr << e.what() << std::endl << std::endl;
 	}
 	

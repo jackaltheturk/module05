@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:35 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/22 21:48:54 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:16:09 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int Bureaucrat::getGrade() const
 }
 void Bureaucrat::increment()
 {
-	if(grade - 1 > 0)
+	if(grade > 1)
 		grade = grade - 1;
 	else	
 		throw GradeTooHighException();
@@ -54,7 +54,7 @@ void Bureaucrat::increment()
 
 void Bureaucrat::decrement()
 {
-	if (grade + 1 < 151)
+	if (grade < 150)
 		grade = grade + 1;
 	else
 		throw GradeTooLowException();

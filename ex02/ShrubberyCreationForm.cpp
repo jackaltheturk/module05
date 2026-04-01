@@ -6,12 +6,13 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/22 22:20:54 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 21:04:38 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(): name("Default"), isSigned(false), signRequired(150), execRequired(150){}
 
@@ -51,16 +52,39 @@ void ShrubberyCreationForm::beSigned(const Bureaucrat& bureaucrat)
 		throw GradeTooLowException();
 };
 
-const char* ShrubberyCreationForm::GradeTooHighException::what() const throw()
+void Bureaucrat::executeForm(AForm const & form)
 {
-	return "Grade too high!";
+	if (form.getIsSigned())
+	{
+		form.execute(*this);
+	}
 }
 
-const char* ShrubberyCreationForm::GradeTooLowException::what() const throw()
+const char* ShrubberyCreationForm::NotSigned::what() const throw()
 {
-	return "Grade too low!";
+	return "Form is not signed!";
 }
 
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+	if (!getIsSigned())
+		throw NotSigned();
+	if (executor.getGrade() > getExecRequired())
+		throw GradeTooLowException();
+	std::string newfile = executor.getName() + "_shrubbery";
+	std::ofstream outFile(newfile.c_str());
+	if (!outFile)
+        std::cerr << "output file can't be created" << std::endl;
+	outFile <<
+	"       00000000\n"
+	"      000e000p00\n"
+	"     000a00000000\n"
+	"     000000p0l00\n"
+	"       00000000\n"
+	"         |||\n"
+	"         |||\n"
+	"         |||\n";
+}
 std::ostream& operator<<(std::ostream& outstream, const ShrubberyCreationForm& ShrubberyCreationForm)
 {
 	outstream << "ShrubberyCreationForm name is : " << ShrubberyCreationForm.getName() << std::endl 
