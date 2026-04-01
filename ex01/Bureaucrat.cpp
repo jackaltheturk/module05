@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:35 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/22 22:37:47 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 19:23:47 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(std::string Name, int Grade): name(Name), grade(Grade)
 		throw GradeTooHighException();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &sample) : name(sample.getName()) ,grade(sample.getGrade())	{}
+Bureaucrat::Bureaucrat(const Bureaucrat& sample) : name(sample.getName()) ,grade(sample.getGrade())	{}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &copy)
 {
