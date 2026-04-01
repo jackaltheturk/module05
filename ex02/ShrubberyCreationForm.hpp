@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 21:14:58 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 21:41:50 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 22:01:00 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class ShrubberyCreationForm : public AForm
 	public:
 	
 	ShrubberyCreationForm();
-	ShrubberyCreationForm(std::string Name, int SignRequired, int ExecRequired);
+	ShrubberyCreationForm(std::string Name);
 	ShrubberyCreationForm(const ShrubberyCreationForm &sample);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm &copy);
 	~ShrubberyCreationForm();

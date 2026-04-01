@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 21:49:05 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 22:00:51 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm(){}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Default", 145, 137) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string Name, int SignRequired, int ExecRequired): AForm(Name,SignRequired , ExecRequired) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string Name ): AForm(Name, 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &sample) : AForm(sample){};
 
