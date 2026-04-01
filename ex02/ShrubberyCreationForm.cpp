@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 21:04:38 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/01 21:13:04 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void ShrubberyCreationForm::beSigned(const Bureaucrat& bureaucrat)
 		throw GradeTooLowException();
 };
 
-void Bureaucrat::executeForm(AForm const & form)
+void Bureaucrat::executeForm(AForm const & form) const
 {
 	if (form.getIsSigned())
 	{
