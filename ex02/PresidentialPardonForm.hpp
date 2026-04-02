@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2025/11/22 22:20:54 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:46:07 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,23 @@
 
 # include "AForm.hpp"
 
-class AForm;
-
 class PresidentialPardonForm : public AForm
 {
 	private:
 	
-	const std::string name;
-	bool isSigned;
-	const int signRequired;
-	const int execRequired;
+	const std::string _target;
 	
 	public:
 	
 	PresidentialPardonForm();
-	PresidentialPardonForm(std::string Name, int SignRequired, int ExecRequired);
+	PresidentialPardonForm(std::string Name);
 	PresidentialPardonForm(const PresidentialPardonForm &sample);
 	PresidentialPardonForm& operator=(const PresidentialPardonForm &copy);
 	~PresidentialPardonForm();
-	std::string getName() const;
-	bool getIsSigned() const;
-	int getSignRequired() const;
-	int getExecRequired() const;
-	void beSigned(const Bureaucrat& bureaucrat);
-	void execute(Bureaucrat const & executor) const;
-	class GradeTooHighException : public std::exception
-	{
-		public:
-		const char* what() const throw();
-	};
 	
-	class GradeTooLowException : public std::exception
+	void execute(Bureaucrat const & executor) const;
+	std::string getTarget() const;
+	class NotSigned : public std::exception
 	{
 		public:
 		const char* what() const throw();
@@ -53,4 +39,5 @@ class PresidentialPardonForm : public AForm
 };
 
  std::ostream& operator<<(std::ostream& outstream, const PresidentialPardonForm& PresidentialPardonForm);
-#endif
+
+ #endif
