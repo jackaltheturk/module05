@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 19:35:37 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:06:50 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class Form
 {
 	private:
 	
-	const std::string name;
-	bool isSigned;
-	const int signRequired;
-	const int execRequired;
+	const std::string _name;
+	bool _isSigned;
+	const int _signRequired;
+	const int _execRequired;
 	
 	public:
 	

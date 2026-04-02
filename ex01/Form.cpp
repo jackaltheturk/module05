@@ -6,47 +6,47 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:35 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 19:35:31 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:08:13 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(): name("Default"), isSigned(false), signRequired(150), execRequired(150){}
+Form::Form(): _name("Default"), _isSigned(false), _signRequired(150), _execRequired(150){}
 
-Form::Form(std::string Name, int SignRequired, int ExecRequired): name(Name), signRequired(SignRequired), execRequired(ExecRequired)
+Form::Form(std::string Name, int SignRequired, int ExecRequired): _name(Name), _signRequired(SignRequired), _execRequired(ExecRequired)
 {
-	isSigned = false;
+	_isSigned = false;
 	if (SignRequired < 1)
     	throw GradeTooHighException();
 	else if (SignRequired > 150)
     	throw GradeTooLowException();
 }
 
-Form::Form(const Form &sample) : name(sample.name), isSigned(sample.isSigned), signRequired(sample.signRequired), execRequired(sample.execRequired){};
+Form::Form(const Form &sample) : _name(sample._name), _isSigned(sample._isSigned), _signRequired(sample._signRequired), _execRequired(sample._execRequired){};
 
 Form& Form::operator=(const Form& copy)
 {
 	if (this != &copy)
-		isSigned = copy.getIsSigned();
+		_isSigned = copy.getIsSigned();
 	return *this;
 }
 
 Form::~Form(){};
 
-std::string Form::getName() const { return name;}
+std::string Form::getName() const { return _name;}
 
-bool Form::getIsSigned() const { return isSigned;}
+bool Form::getIsSigned() const { return _isSigned;}
 
-int Form::getSignRequired() const {return signRequired;}
+int Form::getSignRequired() const {return _signRequired;}
 
-int Form::getExecRequired() const {return execRequired;}
+int Form::getExecRequired() const {return _execRequired;}
 
 void Form::beSigned(const Bureaucrat& bureaucrat)
 {
 	if(bureaucrat.getGrade() <= getSignRequired())
-		isSigned = true;
+		_isSigned = true;
 	else 
 		throw GradeTooLowException();
 };

@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:35 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 20:16:09 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:03:10 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 
 
-Bureaucrat::Bureaucrat(): name("Default"), grade(150) {};
+Bureaucrat::Bureaucrat(): _name("Default"), _grade(150) {};
 
-Bureaucrat::Bureaucrat(std::string Name, int Grade): name(Name), grade(Grade)
+Bureaucrat::Bureaucrat(std::string Name, int Grade): _name(Name), _grade(Grade)
 {
 	if (Grade > 150)
 		throw GradeTooLowException();
@@ -24,12 +24,12 @@ Bureaucrat::Bureaucrat(std::string Name, int Grade): name(Name), grade(Grade)
 		throw GradeTooHighException();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &sample) : name(sample.getName()) ,grade(sample.getGrade())	{}
+Bureaucrat::Bureaucrat(const Bureaucrat &sample) : _name(sample.getName()) ,_grade(sample.getGrade())	{}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &copy)
 {
 	if (this != &copy)
-		grade = copy.getGrade();
+		_grade = copy.getGrade();
 	return *this;
 }
 
@@ -37,25 +37,25 @@ Bureaucrat::~Bureaucrat(){};
 
 std::string Bureaucrat::getName() const
 {
-	return name;
+	return _name;
 }
 
 int Bureaucrat::getGrade() const
 {
-	return grade;
+	return _grade;
 }
 void Bureaucrat::increment()
 {
-	if(grade > 1)
-		grade = grade - 1;
+	if(_grade > 1)
+		_grade = _grade - 1;
 	else	
 		throw GradeTooHighException();
 }
 
 void Bureaucrat::decrement()
 {
-	if (grade < 150)
-		grade = grade + 1;
+	if (_grade < 150)
+		_grade = _grade + 1;
 	else
 		throw GradeTooLowException();
 }

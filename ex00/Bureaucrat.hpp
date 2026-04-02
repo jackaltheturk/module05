@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 16:04:58 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:02:08 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ class Bureaucrat
 {
 	private:
 	
-	const std::string name;
-	int grade;
+	const std::string _name;
+	int _grade;
 	
 	public:
 	

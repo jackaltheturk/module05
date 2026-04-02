@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:11:30 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 22:05:36 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:37:30 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int main()
 {
 	try 
 	{	
-		Bureaucrat ali("ali", 140);
-		ShrubberyCreationForm form55("agac");
+		Bureaucrat ali("ali", 100);
+		ShrubberyCreationForm form55("Home");
 		std::cout << form55<< std::endl; 
 		ali.signForm(form55);
 		std::cout << form55<< std::endl;

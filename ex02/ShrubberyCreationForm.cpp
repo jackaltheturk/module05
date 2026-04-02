@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/01 22:00:51 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 13:34:32 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Default", 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137),_target("Default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string Name ): AForm(Name, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string Target ): AForm("ShrubberyCreationForm", 145, 137),_target(Target)  {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &sample) : AForm(sample){};
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &sample) : AForm(sample), _target(sample._target){};
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
 {
 	if (this != &copy)
+	{	
 		AForm::operator=(copy);
+	}
 	return *this;
 }
 
@@ -40,8 +42,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw NotSigned();
 	if (executor.getGrade() > getExecRequired())
 		throw GradeTooLowException();
-	std::string newfile = executor.getName() + "_shrubbery";
-	std::ofstream outFile(newfile.c_str());
+	std::ofstream outFile((getTarget() + "_shrubbery").c_str());
 	if (!outFile)
         std::cerr << "output file can't be created" << std::endl;
 	outFile <<
@@ -54,6 +55,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	"         |||\n"
 	"         |||\n";
 }
+
+std::string ShrubberyCreationForm::getTarget() const {return _target;}
+
 std::ostream& operator<<(std::ostream& outstream, const ShrubberyCreationForm& ShrubberyCreationForm)
 {
 	outstream << "ShrubberyCreationForm name is : " << ShrubberyCreationForm.getName() << std::endl 
