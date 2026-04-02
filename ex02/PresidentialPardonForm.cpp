@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/02 13:51:28 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 15:57:23 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ const char* PresidentialPardonForm::NotSigned::what() const throw()
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	
+	if (!getIsSigned())
+		throw NotSigned();
+	if (executor.getGrade() > getExecRequired())
+		throw GradeTooLowException();
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 	
 std::string PresidentialPardonForm::getTarget() const {return _target;}

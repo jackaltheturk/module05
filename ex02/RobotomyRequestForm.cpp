@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:28:21 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/02 13:50:44 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 15:52:59 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,17 @@ const char* RobotomyRequestForm::NotSigned::what() const throw()
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-
+	int chance;
+	if (!getIsSigned())
+		throw NotSigned();
+	if (executor.getGrade() > getExecRequired())
+		throw GradeTooLowException();
+	std::srand(time(NULL));
+	chance = std::rand()% 2;
+	if (chance)
+		std::cout << _target << " has been robotomized." << std::endl;
+	else
+		std::cout << _target << " couldn't robotomized. (TOTAL FAILURE)" << std::endl;
 }
 
 std::string RobotomyRequestForm::getTarget() const {return _target;}

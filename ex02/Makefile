@@ -2,7 +2,7 @@ NAME = DerivedForm
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX = c++
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp \
-	 ShrubberyCreationForm.cpp  \
+	 ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
