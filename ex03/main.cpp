@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:11:30 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/02 17:49:56 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 18:19:17 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,23 @@ int main()
 	try
 	{
 		Intern acemi;
-		Bureaucrat ali("Ali",3);
-		AForm* yeniform = acemi.makeForm("RobotomyRequestyuForm","osman");
-		ali.signForm(*yeniform);
-		ali.executeForm(*yeniform);
-		delete(yeniform);
+		Bureaucrat ali("Ali",1);
+		AForm* pardonform = acemi.makeForm("PresidentialPardonForm","osman");
+		AForm* roboform = acemi.makeForm("RobotomyRequestForm","hasan");
+		AForm* treeform = acemi.makeForm("ShrubberyCreationForm","ev");
+		ali.signForm(*pardonform);
+		ali.signForm(*roboform);
+		ali.signForm(*treeform);
+		ali.executeForm(*pardonform);
+		ali.executeForm(*roboform);
+		ali.executeForm(*treeform);
+		delete(pardonform);
+		delete(roboform);
+		delete(treeform);
+		
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
-	
 }

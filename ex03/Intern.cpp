@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 16:26:14 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/02 17:41:09 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 18:04:09 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ AForm* Intern::treeMakerForm(const std::string target)
 {
 	return (new ShrubberyCreationForm(target));
 }
-
+const char* Intern::NoNameException::what() const throw()
+{
+	return "Error: There is no name like this.";
+}
 AForm* Intern::makeForm(const std::string &type, const std::string &target)
 {
 	AForm *(*aform_makers[])(const std::string target) = {&presidentialForm, &robotomyForm, &treeMakerForm};
@@ -54,5 +57,5 @@ AForm* Intern::makeForm(const std::string &type, const std::string &target)
 	}
 
 	std::cout << "Intern faied to create <" << type << "> type form." << std::endl;
-	return (NULL);
+	throw NoNameException();
 }

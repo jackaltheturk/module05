@@ -6,7 +6,7 @@
 /*   By: etorun <etorun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 16:26:17 by etorun            #+#    #+#             */
-/*   Updated: 2026/04/02 17:31:10 by etorun           ###   ########.fr       */
+/*   Updated: 2026/04/02 17:59:24 by etorun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ class Intern
 	Intern& operator=(const Intern &copy);
 	~Intern();
 	AForm* makeForm(std::string const &type, std::string const &target);
+	class NoNameException : public std::exception
+	{
+		public:
+			const char *what() const throw();
+	};
 };
 #endif
